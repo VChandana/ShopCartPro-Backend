@@ -13,20 +13,30 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "product_id")
+    private Long productId;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(length = 500)
     private String description;
+
+    @Column(nullable = false)
     private Double price;
+
+    @Column(nullable = false)
     private String category;
+
+    @Column(name = "image_url")
     private String imageUrl;
 
-    public Long getId() {
-        return id;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {

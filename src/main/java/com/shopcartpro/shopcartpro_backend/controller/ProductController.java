@@ -17,32 +17,32 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping
+    @GetMapping("/getAllProducts")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/getProductById/{productId}")
     public Optional<Product> getProductById(@PathVariable Long id){
         return productService.getProductById(id);
     }
 
-    @GetMapping("/category/{category}")
+    @GetMapping("/getProductsByCategory/{category}")
     public List<Product> getProductsByCategory(@PathVariable String category){
         return productService.getProductsByCategory(category);
     }
 
-    @PostMapping
+    @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product){
         return productService.addProduct(product);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateProduct/{productId}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product product){
         return productService.updateProduct(id,product);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteProduct/{productId}")
     public  void deleteProduct(@PathVariable Long id){
         productService.deleteProduct(id);
     }
