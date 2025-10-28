@@ -26,6 +26,9 @@ public class Cart {
     @Column(nullable = false)
     private int quantity;
 
+    public Cart() {
+    }
+
     public Cart(Long cartId, Long userId, Product product, int quantity) {
         this.cartId = cartId;
         this.userId = userId;

@@ -23,8 +23,8 @@ public class ProductController {
     }
 
     @GetMapping("/getProductById/{productId}")
-    public Optional<Product> getProductById(@PathVariable Long id){
-        return productService.getProductById(id);
+    public Optional<Product> getProductById(@PathVariable Long productId){
+        return productService.getProductById(productId);
     }
 
     @GetMapping("/getProductsByCategory/{category}")
@@ -38,12 +38,12 @@ public class ProductController {
     }
 
     @PutMapping("/updateProduct/{productId}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product){
-        return productService.updateProduct(id,product);
+    public Product updateProduct(@PathVariable Long productId, @RequestBody Product product){
+        return productService.updateProduct(productId,product);
     }
 
     @DeleteMapping("/deleteProduct/{productId}")
-    public  void deleteProduct(@PathVariable Long id){
-        productService.deleteProduct(id);
+    public  void deleteProduct(@PathVariable Long productId){
+        productService.deleteProduct(productId);
     }
 }

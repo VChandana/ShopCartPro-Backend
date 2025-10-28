@@ -1,14 +1,19 @@
 package com.shopcartpro.shopcartpro_backend.service;
 
+import com.shopcartpro.shopcartpro_backend.dto.CartResponse;
 import com.shopcartpro.shopcartpro_backend.model.Cart;
 import com.shopcartpro.shopcartpro_backend.model.Product;
 import com.shopcartpro.shopcartpro_backend.repository.CartRepository;
 import com.shopcartpro.shopcartpro_backend.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CartService {
@@ -19,8 +24,19 @@ public class CartService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Cart> getCartByUserId(Long userId){
-        return cartRepository.findByUserId(userId);
+    public List<CartResponse> getCartByUserId(Long userId){
+        return cartRepository.findByUserId(userId).stream().map(cart -> {
+            CartResponse response = new CartResponse();
+            response.setCartId(cart.getCartId());
+            response.setProductId(cart.getProduct().getProductId());
+            response.setProductName(cart.getProduct().getName());
+            response.setPrice(cart.getProduct().getPrice());
+            response.setQuantity(cart.getQuantity());
+            response.setTotal(cart.getProduct().getPrice() * cart.getQuantity());
+            return response;
+        })
+                .collect(Collectors.toList());
+
     }
 
     public Cart addToCart(Long userId, Long productId, int quantity){
@@ -40,15 +56,24 @@ public class CartService {
         }
     }
 
-    public Cart updateCartQuantity(Long userId, Long productId, int quantity){
+    public Map<String, Object> updateCartQuantity(Long userId, Long productId, int quantity){
         Cart existingCartItem = cartRepository.findByUserIdAndProduct_ProductId(userId,productId);
         if(existingCartItem == null){
             throw new RuntimeException("Cart item not found for userId: " + userId + ", productId: " + productId);
         }
         existingCartItem.setQuantity(quantity);
-        return cartRepository.save(existingCartItem);
+        Cart updated = cartRepository.save(existingCartItem);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("cartId", updated.getCartId());
+        response.put("productId", updated.getProduct().getProductId());
+        response.put("quantity", updated.getQuantity());
+        response.put("message", "Cart updated successfully");
+
+        return response;
     }
 
+    @Transactional
     public void removeFromCart(Long userId, Long productId){
         cartRepository.deleteByUserIdAndProduct_ProductId(userId,productId);
     }
