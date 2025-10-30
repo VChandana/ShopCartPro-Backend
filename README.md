@@ -8,6 +8,20 @@ It supports basic product management, shopping cart, and order flow — perfect 
 
 ---
 
+## 🧱 Tech Stack Overview
+
+**Language:** Java 17  
+**Framework:** Spring Boot 3.x  
+**Database:** MySQL 8.x  
+**ORM:** Hibernate (JPA)  
+**Frontend (connected project):** React + Redux Toolkit Query  
+**Build Tool:** Maven  
+**Server:** Tomcat 10 (Embedded)  
+**Testing:** Postman / JUnit (Planned)
+
+
+---
+
 ## 🚀 Features
 - 🧩 Modular Backend (Spring Boot REST APIs)
   - CRUD operations for products
@@ -49,7 +63,7 @@ shopcartpro-backend/
 
 ### 2️⃣ Clone and Build
 ```bash
-git clone https://github.com/yourusername/shopcartpro-backend.git
+git clone https://github.com/VChandana/ShopCartPro-Backend.git
 cd shopcartpro-backend
 mvn clean install
 ```
@@ -102,13 +116,13 @@ Use Postman or browser:
 - http://localhost:8080/api/products
 - http://localhost:8080/api/products/category/Electronics
 
+
 ---
 
-## 🧠 Next Steps (Frontend Integration)
-- [ ] Create React app (shopcartpro-frontend)
-- [ ] Fetch product list from backend
-- [ ] Implement Cart and Order UI
-- [ ] Add Admin Panel for product CRUD
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.2-green)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
 
 ---
 
