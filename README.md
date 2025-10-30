@@ -4,9 +4,11 @@
 Java 17 · Spring Boot 3 · Spring Data JPA · MySQL · React
 
 ShopCartPro is a full-stack e-commerce project built with Java + Spring Boot (Backend) and React + Redux Toolkit Query (Frontend).
-It demonstrates modular REST APIs, state management, and seamless frontend-backend integration for modern web applications
+It demonstrates modular REST API design, state management, and seamless frontend-backend integration for modern web applications.
+
 
 ---
+
 
 ## 🧱 Tech Stack Overview
 
@@ -29,7 +31,8 @@ It demonstrates modular REST APIs, state management, and seamless frontend-backe
   - Cart and Order management
   - Ready for JWT-based authentication
 - 💾 Database: MySQL with auto-loaded sample data
-- 🎨 Frontend: React - https://github.com/VChandana/ShopCartPro-Frontend
+- 🎨 Frontend: Built using **React + Redux Toolkit Query**  
+  🔗 [View Frontend Repository](https://github.com/VChandana/ShopCartPro-Frontend)
   - Product listing, cart, checkout, and admin UI (to be added next)
 - 🧪 Postman-ready APIs for testing
 
